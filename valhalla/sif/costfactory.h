@@ -53,13 +53,13 @@ class CostFactory {
   cost_ptr_t Create(const std::string& name,
                     const boost::property_tree::ptree& config) const {
     auto itr = factory_funcs_.find(name);
-    valhalla::midgard::logging::Log("Known costing functions:");
+    LOG_INFO("Known costing functions:");
     for(const auto& entry : factory_funcs_)
     {
-      valhalla::midgard::logging::Log(entry.first);
+      LOG_INFO(entry.first);
     }
     if (itr == factory_funcs_.end()) {
-      valhalla::midgard::logging::Log("No costing method found for '" + name + "'");
+      LOG_INFO("No costing method found for '" + name + "'");
       throw std::runtime_error("No costing method found for '" + name + "'");
     }
     //create the cost using the function pointer

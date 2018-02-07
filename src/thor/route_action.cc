@@ -20,6 +20,7 @@ namespace valhalla {
   namespace thor {
 
   std::list<valhalla::odin::TripPath> thor_worker_t::route(const boost::property_tree::ptree& request, const boost::optional<int> &date_time_type){
+    LOG_INFO("thor_worker::route");
     parse_locations(request);
     auto costing = parse_costing(request);
 

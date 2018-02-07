@@ -45,6 +45,7 @@ namespace valhalla {
     }
 
     void loki_worker_t::route(rapidjson::Document& request) {
+      LOG_INFO("loki_worker::route");
       init_route(request);
       auto costing = GetOptionalFromRapidJson<std::string>(request, "/costing");
       check_locations(locations.size(), max_locations.find(*costing)->second);

@@ -42,6 +42,8 @@ class CostFactory {
    * @param function   the function pointer to call to actually create the cost object
    */
   void Register(const std::string& name, factory_function_t function) {
+    LOG_INFO("Registering costing factory: ");
+    LOG_INFO(name);
     factory_funcs_.emplace(name, function);
   }
 

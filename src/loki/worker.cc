@@ -241,6 +241,7 @@ namespace valhalla {
         switch (action->second) {
           case ROUTE:
           case VIAROUTE:
+            LOG_INFO("Entering route");
             route(request_rj);
             result.messages.emplace_back(rapidjson::to_string(request_rj));
             break;

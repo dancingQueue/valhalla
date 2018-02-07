@@ -584,4 +584,4 @@ cost_ptr_t CreateMagentaCost(const boost::property_tree::ptree& config) {
 
 /**********************************************************************************************/
 
-
+}}

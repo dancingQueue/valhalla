@@ -262,6 +262,7 @@ int main(int argc, char *argv[]) {
   factory.Register("bicycle", CreateBicycleCost);
   factory.Register("pedestrian", CreatePedestrianCost);
   factory.Register("motor_scooter", CreateMotorScooterCost);
+  factory.Register("magentacost", CreateMagentaCost);
   std::string method_options = "costing_options." + routetype;
   auto costing_options = json_ptree.get_child(method_options, {});
   cost_ptr_t costing = factory.Create(routetype, costing_options);

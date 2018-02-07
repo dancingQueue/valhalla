@@ -281,10 +281,10 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
                              1.0f, 1.1f, 1.2f, 1.3f,
                              1.4f, 1.6f, 1.9f, 2.2f,
                              2.5f, 2.8f, 3.1f, 3.5f },
-      left(pt.get<float>("left"), -1000),
-      right(pt.get<float>("right"), 1000),
-      top(pt.get<float>("top"), -1000),
-      bottom(pt.get<float>("bottom"), 1000) {
+      left(pt.get<float>("left", -1000)),
+      right(pt.get<float>("right", 1000)),
+      top(pt.get<float>("top", -1000)),
+      bottom(pt.get<float>("bottom", 1000)) {
 
   // Get the vehicle type - enter as string and convert to enum
   std::string type = pt.get<std::string>("type", "car");

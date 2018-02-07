@@ -10,6 +10,8 @@
 #include <valhalla/sif/pedestriancost.h>
 #include <valhalla/sif/truckcost.h>
 #include <valhalla/sif/transitcost.h>
+#include <valhalla/sif/magentacost.h>
+
 #include <valhalla/baldr/rapidjson_utils.h>
 
 #include <boost/property_tree/ptree.hpp>

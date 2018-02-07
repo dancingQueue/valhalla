@@ -179,6 +179,7 @@ namespace valhalla {
       max_best_paths_shape = config.get<size_t>("service_limits.trace.max_best_paths_shape");
 
 
+      valhalla::midgard::logging::Log("Registering costing functions...");
       // Register edge/node costing methods
       // TODO: move this into the loop above
       factory.Register("auto", sif::CreateAutoCost);

@@ -195,6 +195,7 @@ nobase_include_HEADERS = \
 	valhalla/sif/dynamiccost.h \
 	valhalla/sif/hierarchylimits.h \
 	valhalla/sif/edgelabel.h \
+	valhalla/sif/magentacost.h \
 	valhalla/meili/universal_cost.h \
 	valhalla/meili/candidate_search.h \
 	valhalla/meili/geometry_helpers.h \
@@ -319,6 +320,7 @@ libvalhalla_la_SOURCES = \
 	src/sif/transitcost.cc \
 	src/sif/truckcost.cc \
 	src/sif/dynamiccost.cc \
+	src/sif/magentacost.cc \
 	src/meili/universal_cost.cc \
 	src/meili/viterbi_search.cc \
 	src/meili/topk_search.cc \

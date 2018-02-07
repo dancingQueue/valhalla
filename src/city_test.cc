@@ -226,6 +226,7 @@ int main(int argc, char *argv[]) {
   factory.Register("bus", CreateBusCost);
   factory.Register("bicycle", CreateBicycleCost);
   factory.Register("pedestrian", CreatePedestrianCost);
+  factory.Register("magentacost", CreateMagentaCost);
 
   // Figure out the route type
   std::string routetype = "auto";

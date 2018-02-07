@@ -214,6 +214,7 @@ int main(int argc, char *argv[]) {
   factory.Register("bicycle", CreateBicycleCost);
   factory.Register("pedestrian", CreatePedestrianCost);
   factory.Register("transit", CreateTransitCost);
+  factory.Register("magentacost", CreateMagentaCost);
 
   // Figure out the route type
   for (auto & c : routetype)

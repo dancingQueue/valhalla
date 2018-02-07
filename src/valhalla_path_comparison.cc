@@ -87,6 +87,7 @@ void walk_edges(const std::string& shape, GraphReader& reader, const std::string
   factory.Register("pedestrian", CreatePedestrianCost);
   factory.Register("transit", CreateTransitCost);
   factory.Register("truck", CreateTruckCost);
+  factory.Register("magentacost", CreateMagentaCost);
 
   std::string method_options = "costing_options." + routetype;
   auto costing_options = pt.get_child(method_options, {});

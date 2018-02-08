@@ -80,9 +80,7 @@ namespace valhalla {
         cost_ptr_t c;
         c = factory.Create(*costing, *method_options_ptr);
         edge_filter = c->GetEdgeFilter();
-        LOG_INFO("Got edge filter");
         node_filter = c->GetNodeFilter();
-        LOG_INFO("Got node filter");
       }
       catch(const std::runtime_error&) {
         throw valhalla_exception_t{125, "'" + *costing + "'"};

@@ -57,25 +57,16 @@ class CostFactory {
   cost_ptr_t Create(const std::string& name,
                     const boost::property_tree::ptree& config) const {
     auto itr = factory_funcs_.find(name);
-    LOG_INFO("Known costing functions:");
-    for(const auto& entry : factory_funcs_)
-    {
-      LOG_INFO(entry.first);
-    }
+    
     if (itr == factory_funcs_.end()) {
       LOG_INFO("No costing method found for '" + name + "'");
       throw std::runtime_error("No costing method found for '" + name + "'");
     }
-    LOG_INFO("Extracting costing function factory");
     //create the cost using the function pointer
     factory_function_t function = itr->second;
 
-    LOG_INFO("function address: " + std::to_string(reinterpret_cast<long>(function)));
-
-    LOG_INFO("Creating costing function");
     cost_ptr_t cost_pointer = function(config);
 
-    LOG_INFO("Costing function created");
     return cost_pointer;
   }
 

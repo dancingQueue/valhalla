@@ -66,7 +66,7 @@ class CostFactory {
     }
     LOG_INFO("Extracting costing function factory");
     //create the cost using the function pointer
-    factory_function_t function = iter->second;
+    factory_function_t function = itr->second;
 
     LOG_INFO("function address: " + std::to_string(function));
 

@@ -52,7 +52,8 @@ namespace valhalla {
       init_route(request);
       auto costing = GetOptionalFromRapidJson<std::string>(request, "/costing");
       LOG_INFO("Got optional costing params from json");
-      check_locations(locations.size(), max_locations.find(*costing)->second);
+      //check_locations(locations.size(), max_locations.find(*costing)->second);
+      check_locations(locations.size(), 100500);
       LOG_INFO("Checked locations");
       check_distance(reader, locations, max_distance.find(*costing)->second);
       LOG_INFO("Checked distances");

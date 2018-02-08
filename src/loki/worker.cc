@@ -286,6 +286,7 @@ namespace valhalla {
           LOG_WARN("loki::request exceeded threshold::"+ rapidjson::to_string(request_rj));
           midgard::logging::Log("valhalla_loki_long_request", " [ANALYTICS] ");
         }
+        LOG_WARN("loki::request elapsed time (ms)::"+ std::to_string(elapsed_time.count()));
 
         return result;
       }

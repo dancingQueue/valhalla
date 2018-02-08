@@ -214,6 +214,7 @@ namespace valhalla {
           LOG_WARN("thor::" + ACTION_TO_STRING.find(action)->second + " request exceeded threshold::"+ ss.str());
           midgard::logging::Log("valhalla_thor_long_request_"+ACTION_TO_STRING.find(action)->second, " [ANALYTICS] ");
         }
+        LOG_WARN("thor::request elapsed time (ms)::"+ std::to_string(elapsed_time));
 
         return result;
       }

@@ -55,7 +55,8 @@ namespace valhalla {
       //check_locations(locations.size(), max_locations.find(*costing)->second);
       check_locations(locations.size(), 100500);
       LOG_INFO("Checked locations");
-      check_distance(reader, locations, max_distance.find(*costing)->second);
+      //check_distance(reader, locations, max_distance.find(*costing)->second);
+      check_distance(reader, locations, 100500);
       LOG_INFO("Checked distances");
       auto& allocator = request.GetAllocator();
       LOG_INFO("Got allocator");

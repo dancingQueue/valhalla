@@ -46,12 +46,16 @@ namespace valhalla {
     }
 
     void loki_worker_t::route(rapidjson::Document& request) {
-      LOG_INFO("loki_worker::route");
+      LOG_INFO("loki_worker::route - start");
       init_route(request);
       auto costing = GetOptionalFromRapidJson<std::string>(request, "/costing");
+      LOG_INFO("Got optional costing params from json");
       check_locations(locations.size(), max_locations.find(*costing)->second);
+      LOG_INFO("Checked locations");
       check_distance(reader, locations, max_distance.find(*costing)->second);
+      LOG_INFO("Checked distances");
       auto& allocator = request.GetAllocator();
+      LOG_INFO("Got allocator");
 
       // Validate walking distances (make sure they are in the accepted range)
       if (*costing == "multimodal" || *costing == "transit") {
@@ -70,13 +74,17 @@ namespace valhalla {
         }
       }
       auto date_type_pointer = rapidjson::Pointer("/date_time/type");
+
       //default to current date_time for mm or transit.
       if (! date_type_pointer.Get(request) && (*costing == "multimodal" || *costing == "transit")) {
         date_type_pointer.Set(request, 0);
       }
+      LOG_INFO("Set data type pointer");
       auto& locations_array = request["locations"];
+      LOG_INFO("Got locations array");
       //check the date stuff
       auto date_time_value = GetOptionalFromRapidJson<std::string>(request, "/date_time/value");
+      
       if (boost::optional<int> date_type = GetOptionalFromRapidJson<int>(request, "/date_time/type")) {
         //not yet on this
         if(*date_type == 2 && (*costing == "multimodal" || *costing == "transit"))
@@ -106,7 +114,7 @@ namespace valhalla {
           break;
         }
       }
-
+      LOG_INFO("Done data type and value staff");
       //correlate the various locations to the underlying graph
       std::unordered_map<size_t, size_t> color_counts;
       try{
@@ -131,6 +139,7 @@ namespace valhalla {
       catch(const std::exception&) {
         throw valhalla_exception_t{171};
       }
+      LOG_INFO("Done locations correlating to underlying graph");
 
       //are all the locations in the same color regions
       if (!connectivity_map)
@@ -144,6 +153,8 @@ namespace valhalla {
       }
       if(!connected)
         throw valhalla_exception_t{170};
+      LOG_INFO("loki_worker::route - end");
+  
     }
   }
 }

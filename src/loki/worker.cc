@@ -247,6 +247,7 @@ namespace valhalla {
             LOG_INFO("Entering route");
             route(request_rj);
             result.messages.emplace_back(rapidjson::to_string(request_rj));
+            LOG_INFO("Request processed")
             break;
           case LOCATE:
             result = to_response(locate(request_rj), jsonp, info);
@@ -279,6 +280,7 @@ namespace valhalla {
             return jsonify_error({107}, info);
         }
         //get processing time for loki
+      
         auto e = std::chrono::system_clock::now();
         std::chrono::duration<float, std::milli> elapsed_time = e - s;
         //log request if greater than X (ms)

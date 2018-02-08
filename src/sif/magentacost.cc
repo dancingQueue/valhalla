@@ -286,6 +286,8 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
       top(pt.get<float>("top", -1000)),
       bottom(pt.get<float>("bottom", 1000)) {
 
+  LOG_INFO("Entering magenta cost constructor");
+
   // Get the vehicle type - enter as string and convert to enum
   std::string type = pt.get<std::string>("type", "car");
   if (type == "motorcycle") {
@@ -297,6 +299,8 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
   } else {
     type_ = VehicleType::kCar;
   }
+
+  LOG_INFO("__1");
 
   maneuver_penalty_ = kManeuverPenaltyRange(
     pt.get<float>("maneuver_penalty", kDefaultManeuverPenalty)
@@ -326,12 +330,16 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
     pt.get<float>("country_crossing_penalty", kDefaultCountryCrossingPenalty)
   );
 
+  LOG_INFO("__2");
+
   // Set the cost (seconds) to enter a ferry (only apply entering since
   // a route must exit a ferry (except artificial test routes ending on
   // a ferry!)
   ferry_cost_ = kFerryCostRange(
     pt.get<float>("ferry_cost", kDefaultFerryCost)
   );
+
+  LOG_INFO("__3");
 
   // Modify ferry penalty and edge weighting based on use_ferry factor
   use_ferry_ = kUseFerryRange(
@@ -351,16 +359,22 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
     ferry_factor_  = 1.5f - use_ferry_;
   }
 
+  LOG_INFO("__4");
+
   // Create speed cost table
   speedfactor_[0] = kSecPerHour;  // TODO - what to make speed=0?
   for (uint32_t s = 1; s <= kMaxSpeedKph; s++) {
     speedfactor_[s] = (kSecPerHour * 0.001f) / static_cast<float>(s);
   }
 
+  LOG_INFO("__5");
+
   // Set density factors - used to penalize edges in dense, urban areas
   for (uint32_t d = 0; d < 16; d++) {
     density_factor_[d] = 0.85f + (d * 0.025f);
   }
+
+  LOG_INFO("Magenta cost construction complete");
 }
 
 // Destructor

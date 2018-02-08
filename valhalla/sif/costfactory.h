@@ -64,8 +64,17 @@ class CostFactory {
       LOG_INFO("No costing method found for '" + name + "'");
       throw std::runtime_error("No costing method found for '" + name + "'");
     }
+    LOG_INFO("Extracting costing function factory");
     //create the cost using the function pointer
-    return itr->second(config);
+    factory_function_t function = iter->second;
+
+    LOG_INFO("function address: " + std::to_string(function));
+
+    LOG_INFO("Creating costing function");
+    cost_ptr_t cost_pointer = function(config);
+
+    LOG_INFO("Costing function created");
+    return cost_pointer;
   }
 
   cost_ptr_t Create(const std::string& name,

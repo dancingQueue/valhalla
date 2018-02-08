@@ -280,13 +280,40 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
       trans_density_factor_{ 1.0f, 1.0f, 1.0f, 1.0f,
                              1.0f, 1.1f, 1.2f, 1.3f,
                              1.4f, 1.6f, 1.9f, 2.2f,
-                             2.5f, 2.8f, 3.1f, 3.5f },
-      left(pt.get<float>("left", -1000)),
-      right(pt.get<float>("right", 1000)),
-      top(pt.get<float>("top", -1000)),
-      bottom(pt.get<float>("bottom", 1000)) {
+                             2.5f, 2.8f, 3.1f, 3.5f }
+      ) {
 
   LOG_INFO("Entering magenta cost constructor");
+
+  
+  boost::optional<float> oleft = pt.get_optional<float>("left");
+  boost::optional<float> oright = pt.get_optional<float>("right");
+  boost::optional<float> obottom = pt.get_optional<float>("bottom");
+  boost::optional<float> otop = pt.get_optional<float>("top");
+
+  if(oleft) this->left = oleft;
+  else {
+    LOG_WARN("left not found");
+    this->left = -1000;
+  }
+
+  if(oright) this->right = oright;
+  else {
+    LOG_WARN("right not found");
+    this->right = 1000;
+  }
+
+  if(obottom) this->bottom = obottom;
+  else {
+    LOG_WARN("bottom not found");
+    this->bottom = -1000;
+  }
+
+  if(otop) this->top = otop;
+  else {
+    LOG_WARN("top not found");
+    this->top = 1000;
+  }
 
   // Get the vehicle type - enter as string and convert to enum
   std::string type = pt.get<std::string>("type", "car");

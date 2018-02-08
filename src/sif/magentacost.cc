@@ -441,15 +441,15 @@ bool MagentaCost::AllowedReverse(const baldr::DirectedEdge* edge,
 // Check if access is allowed at the specified node.
 bool MagentaCost::Allowed(const baldr::NodeInfo* node) const  {
   LOG_INFO("Inside Allowed");
+  
+  LOG_INFO(std::to_string(node->latlng().lng()) + " " + std::to_string(node->latlng().lat()));
   if (node->latlng().lng() > left && node->latlng().lng() < right &&
       node->latlng().lat() > bottom && node->latlng().lat() < top) {
         LOG_INFO("Point inside square");
+        return false;
   }
-  LOG_INFO(std::to_string(node->latlng().lng()) + " " + std::to_string(node->latlng().lat()));
-  return (node->access() & kAutoAccess) && !(
-      node->latlng().lng() > left && node->latlng().lng() < right &&
-      node->latlng().lat() > bottom && node->latlng().lat() < top
-  );
+  
+  return (node->access() & kAutoAccess);
 }
 
 // Get the cost to traverse the edge in seconds

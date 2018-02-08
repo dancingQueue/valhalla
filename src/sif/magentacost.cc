@@ -282,9 +282,6 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
                              1.4f, 1.6f, 1.9f, 2.2f,
                              2.5f, 2.8f, 3.1f, 3.5f }
       {
-
-  LOG_INFO("Entering magenta cost constructor");
-
   
   boost::optional<float> oleft = pt.get_optional<float>("left");
   boost::optional<float> oright = pt.get_optional<float>("right");

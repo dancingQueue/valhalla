@@ -281,7 +281,7 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
                              1.0f, 1.1f, 1.2f, 1.3f,
                              1.4f, 1.6f, 1.9f, 2.2f,
                              2.5f, 2.8f, 3.1f, 3.5f }
-      ) {
+      {
 
   LOG_INFO("Entering magenta cost constructor");
 

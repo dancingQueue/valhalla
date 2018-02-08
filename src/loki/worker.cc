@@ -114,7 +114,6 @@ namespace valhalla {
         }
       }
     }
-    LOG_INFO("Added avoid locations");
 
 
     loki_worker_t::loki_worker_t(const boost::property_tree::ptree& config):

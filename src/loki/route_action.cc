@@ -42,6 +42,7 @@ namespace valhalla {
       if(locations.size() < 2)
         throw valhalla_exception_t{120};
       parse_costing(request);
+      LOG_INFO("Parsed config");
     }
 
     void loki_worker_t::route(rapidjson::Document& request) {

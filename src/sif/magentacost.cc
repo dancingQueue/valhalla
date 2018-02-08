@@ -291,25 +291,37 @@ MagentaCost::MagentaCost(const boost::property_tree::ptree& pt)
   boost::optional<float> obottom = pt.get_optional<float>("bottom");
   boost::optional<float> otop = pt.get_optional<float>("top");
 
-  if(oleft) this->left = *oleft;
+  if(oleft) {
+    this->left = *oleft;
+    LOG_INFO("left: " + std::to_string(this->left));
+  }
   else {
     LOG_WARN("left not found");
     this->left = -1000;
   }
 
-  if(oright) this->right = *oright;
+  if(oright) {
+    this->right = *oright;
+    LOG_INFO("right: " + std::to_string(this->right));
+  }
   else {
     LOG_WARN("right not found");
     this->right = 1000;
   }
 
-  if(obottom) this->bottom = *obottom;
+  if(obottom) {
+    this->bottom = *obottom;
+    LOG_INFO("bottom: " + std::to_string(this->bottom));
+  }
   else {
     LOG_WARN("bottom not found");
     this->bottom = -1000;
   }
 
-  if(otop) this->top = *otop;
+  if(otop) {
+    this->top = *otop;
+    LOG_INFO("top: " + std::to_string(this->top));
+  }
   else {
     LOG_WARN("top not found");
     this->top = 1000;

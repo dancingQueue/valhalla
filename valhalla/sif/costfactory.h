@@ -17,6 +17,8 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
+#include <string>
+
 namespace valhalla {
 namespace sif {
 
@@ -68,7 +70,7 @@ class CostFactory {
     //create the cost using the function pointer
     factory_function_t function = itr->second;
 
-    LOG_INFO("function address: " + std::to_string(function));
+    LOG_INFO("function address: " + std::to_string(&function));
 
     LOG_INFO("Creating costing function");
     cost_ptr_t cost_pointer = function(config);

@@ -14,12 +14,14 @@ using namespace valhalla::baldr;
 namespace {
   void check_locations(const size_t location_count, const size_t max_locations) {
     //check that location size does not exceed max.
+    LOG_INFO("Inside check locations");
     if (location_count > max_locations)
       throw valhalla_exception_t{150, std::to_string(max_locations)};
   }
 
   void check_distance(const GraphReader& reader, const std::vector<Location>& locations, float max_distance){
     //see if any locations pairs are unreachable or too far apart
+    LOG_INFO("Inside check distances");
     auto lowest_level = TileHierarchy::levels().rbegin();
     for(auto location = ++locations.cbegin(); location != locations.cend(); ++location) {
       //check if distance between latlngs exceed max distance limit for each mode of travel

@@ -108,7 +108,7 @@ namespace valhalla {
 
       //check the distances
       auto max_location_distance = 10050000;
-      check_distance(sources, targets, max_matrix_distance.find(costing)->second, max_location_distance);
+      //check_distance(sources, targets, max_matrix_distance.find(costing)->second, max_location_distance);
 
       //correlate the various locations to the underlying graph
       std::vector<baldr::Location> sources_targets;

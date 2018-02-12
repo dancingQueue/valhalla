@@ -48,9 +48,9 @@ namespace valhalla {
       init_route(request);
       auto costing = GetOptionalFromRapidJson<std::string>(request, "/costing");
       //check_locations(locations.size(), max_locations.find(*costing)->second);
-      check_locations(locations.size(), 100500);
+      check_locations(locations.size(), 10050000);
       //check_distance(reader, locations, max_distance.find(*costing)->second);
-      check_distance(reader, locations, 100500);
+      check_distance(reader, locations, 10050000);
       auto& allocator = request.GetAllocator();
 
       // Validate walking distances (make sure they are in the accepted range)

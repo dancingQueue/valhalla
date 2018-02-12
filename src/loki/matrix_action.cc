@@ -102,12 +102,12 @@ namespace valhalla {
         throw valhalla_exception_t{140, ACTION_TO_STRING.find(action)->second};
 
       //check that location size does not exceed max.
-      auto max = max_matrix_locations.find(costing)->second;
+      auto max = 10050000;
       if (sources.size() > max || targets.size() > max)
         throw valhalla_exception_t{150, std::to_string(max)};
 
       //check the distances
-      auto max_location_distance = std::numeric_limits<float>::min();
+      auto max_location_distance = 10050000;
       check_distance(sources, targets, max_matrix_distance.find(costing)->second, max_location_distance);
 
       //correlate the various locations to the underlying graph

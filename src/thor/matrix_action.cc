@@ -105,13 +105,14 @@ namespace valhalla {
       auto costmatrix = [&]() {
         thor::CostMatrix matrix;
         return matrix.SourceToTarget(correlated_s, correlated_t, reader, mode_costing,
-                                    mode, max_matrix_distance.find(costing)->second);
+                                    mode, 10050000);
       };
       auto timedistancematrix = [&]() {
         thor::TimeDistanceMatrix matrix;
         return matrix.SourceToTarget(correlated_s, correlated_t, reader, mode_costing,
-                                    mode, max_matrix_distance.find(costing)->second);
+                                    mode, 10050000);
       };
+      valhalla::midgard::logging::Log("Before Switch ");
       switch (source_to_target_algorithm) {
         case SELECT_OPTIMAL:
           //TODO - Do further performance testing to pick the best algorithm for the job
